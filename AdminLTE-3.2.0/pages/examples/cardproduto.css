@@ -1,0 +1,92 @@
+.client-card {
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: stretch;
+  max-width: 300px;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.icon-section {
+  background: #318fce;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.client-card .fa-user {
+  font-size: clamp(40px, 2vw, 60px);
+}
+
+.client-content {
+  flex: 1;
+  padding: 12px;
+}
+
+.client-name {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+.whatsapp-icon{
+    width: 25px; 
+    height: 25px;
+}
+  
+
+.client-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.client-detail {
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: #64748b;
+}
+
+.client-detail i {
+  width: 16px;
+  color: #3498db;
+  margin-right: 6px;
+}
+
+.client-status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.status-active {
+  background: #28a745;
+  color: #fff;
+}
+
+.status-inactive {
+  background: #dc3545;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .client-card {
+    margin: 10px auto;
+  }
+}
