@@ -26,6 +26,23 @@
 
 }
 
+.prices-section {
+  margin: 15px 0;
+  text-align: center;
+}
+
+.old-price {
+  color: #ff0000;
+  text-decoration: line-through;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.new-price {
+  color: #008000;
+  font-weight: bold;
+}
+
 .icon-section img {
   width: 100%;
   object-fit: cover;

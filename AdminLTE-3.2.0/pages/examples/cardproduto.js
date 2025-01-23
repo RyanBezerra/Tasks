@@ -29,12 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
             <div class="quantity-controls">
-                <div class="d-flex align-items-center gap-3">
-                    <button class="btn lista-produto-btn-qtd"><i class="fas fa-trash"></i></button>
-                    <span class="lista-produto-qtd">1</span>
-                    <button class="btn lista-produto-btn-qtd">+</button>
-                </div>
-            </div>
+  <div class="d-flex flex-column align-items-center">
+    <div class="prices-section mb-3">
+      <span class="old-price d-block">R$ 199,90</span>
+      <span class="new-price d-block">R$ 149,90</span>
+    </div>
+    
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn lista-produto-btn-qtd"><i class="fas fa-trash"></i></button>
+      <span class="lista-produto-qtd">1</span>
+      <button class="btn lista-produto-btn-qtd">+</button>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   `;
