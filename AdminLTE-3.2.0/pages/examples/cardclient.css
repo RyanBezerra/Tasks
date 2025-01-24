@@ -1,59 +1,17 @@
-.client-card:hover {
-  transition: all 0.3s ease;
-  transform: translateY(-5px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+div{
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap;
 }
 
-.client-card .fa-user {
+.fa-user {
   font-size: clamp(40px, 2vw, 60px);
 }
 
-.client-name {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  text-overflow: ellipsis;
+.fonte-responsiva{
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
 }
 
-.client-detail span {
-  text-overflow: ellipsis;
-  max-width: 180px;
-}
-
-.whatsapp-icon{
-    width: 25px; 
-    height: 25px;
-}
-
-.client-detail {
-  font-size: clamp(0.8rem, 2vw, 1rem);
-  color: #64748b;
-}
-
-.client-detail i {
-  width: 16px;
-  color: #3498db;
-  margin-right: 6px;
-}
-
-.client-status {
-  display: inline-block;
-  padding: 5px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-.status-active {
-  background: #28a745;
-  color: #fff;
-}
-
-.status-inactive {
-  background: #dc3545;
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .client-card {
-    margin: 10px auto;
-  }
+.fonte-responsiva-pequena{
+  font-size: clamp(1rem, 2vw, 1.1rem);
 }
