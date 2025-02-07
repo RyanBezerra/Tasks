@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="prices-section d-flex flex-column align-items-end w-100 mt-3">
           <span class="infos text-success font-weight-bold text-nowrap mr-3">R$ 149,90</span>
           <span class="preço-velho infos text-danger font-weight-bold text-nowrap mr-3">R$ 199,90</span>
-            <div class="d-flex align-items-center justify-content-center">
-              <button class="btn btn-sm border-0 mr-1">
-              <i class="fas fa-trash text-dark mb-2 infos "></i>
+            <div class="d-flex align-items-center justify-content-center p-2 mr-2">
+              <button class="btn btn-sm btn-dark border-0 mr-1 infos">
+              <i class="fas fa-trash text-white infos "></i>
               </button>
               <span class="h5 mr-1 mb-1 infos font-weight-bold">1</span>
-              <button class="btn btn-sm border-0 infos">
-              <i class="fas fa-plus text-dark mb-2 mr-2"></i>
+              <button class="btn btn-sm btn btn-dark border-0 infos">
+              <i class="fas fa-plus text-white"></i>
               </button>
             </div>
           </div>
