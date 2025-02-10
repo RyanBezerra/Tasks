@@ -3,45 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Processos Corregedoria</title>
-  <!-- Style.css -->
-  <link rel="stylesheet" href="COLUNAS.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
+  <title>Gerenciador de Processos</title>
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <style>
+    .btn-link {
+      color: inherit; /* Mantém a cor do texto */
+      text-decoration: none; /* Remove o sublinhado */
+    }
+
+    .btn-link:hover {
+      background-color: transparent; /* Remove o fundo ao passar o mouse */
+      color: inherit; /* Mantém a cor do texto ao passar o mouse */
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
-<!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
+    <ul class="navbar-nav d-flex flex-row flex-md-row align-items-center">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+          <i class="fas fa-bars"></i>
+        </a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Quadros</a>
+      <li class="nav-item d-none d-md-block">
+        <a href="#" class="nav-link">
+          <i class="fas fa-desktop mr-1"></i>
+          <span class="d-none d-lg-inline">Área de Trabalho</span>
+        </a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Suporte</a>
+      <li class="nav-item d-none d-md-block">
+        <a href="#" class="nav-link">
+          <i class="fas fa-clock mr-1"></i>
+          <span class="d-none d-lg-inline">Recente</span>
+        </a>
+      </li>
+      <li class="nav-item d-none d-md-block">
+        <a href="#" class="nav-link">
+          <i class="fas fa-star mr-1"></i>
+          <span class="d-none d-lg-inline">Favoritos</span>
+        </a>
       </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
+      <li class="nav-item d-flex align-items-center mr-2">
+        <button class="btn btn-primary btn-sm d-flex align-items-center justify-content-center">
+          <i class="fas fa-plus mr-1"></i>
+          <span class="d-none d-md-inline">Criar</span>
+        </button>
+      </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+        <a class="nav-link d-flex align-items-center" data-widget="navbar-search" href="#" role="button">
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Pesquisar" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -54,118 +76,24 @@
           </form>
         </div>
       </li>
-
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" 
+           class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">Corregedoria</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center">
         <div class="image">
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
@@ -174,24 +102,20 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Quadros -->
           <li class="nav-item">
             <a href="CARDS.html" class="nav-link">
               <i class="nav-icon fas fa-th-large"></i>
               <p>Quadros</p>
             </a>
           </li>
-          <!-- Processos -->
           <li class="nav-item">
             <a href="COLUNAS.html" class="nav-link active">
               <i class="nav-icon fas fa-columns"></i>
               <p>Processos</p>
             </a>
           </li>
-          <!-- Relatórios -->
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-bar"></i>
@@ -200,12 +124,10 @@
           </li>
         </ul>
       </nav>
-      <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper -->
   <div class="content-wrapper">
     <!-- Content Header -->
     <section class="content-header">
@@ -233,53 +155,65 @@
       <div class="container-fluid">
         <div class="row">
           <!-- Entrada Column -->
-          <div class="col-md-3">
+          <div class="col-3">
             <div class="card">
               <div class="card-header bg-primary">
-                <h3 class="card-title">Entrada</h3>
-                <span class="badge badge-light float-right">0</span>
+                <h3 class="card-title"><i class="fas fa-inbox"></i> Entrada</h3>
+                <span class="badge badge-light float-right" id="entrada-count">0</span>
               </div>
-              <div class="card-body p-2">
+              <div class="card-body p-2" style="max-height: calc(100vh - 250px); overflow-y: auto;">
                 <div class="process-list" data-stage="entrada"></div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-link text-left" id="add-card-entrada" style="padding: 0; border: none;">+ Adicionar um cartão</button>
               </div>
             </div>
           </div>
 
           <!-- Em Análise Column -->
-          <div class="col-md-3">
+          <div class="col-3">
             <div class="card">
               <div class="card-header bg-info">
-                <h3 class="card-title">Em Análise</h3>
-                <span class="badge badge-light float-right">0</span>
+                <h3 class="card-title"><i class="fas fa-search"></i> Em Análise</h3>
+                <span class="badge badge-light float-right" id="analise-count">0</span>
               </div>
-              <div class="card-body p-2">
+              <div class="card-body p-2" style="max-height: calc(100vh - 250px); overflow-y: auto;">
                 <div class="process-list" data-stage="analise"></div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-link text-left" id="add-card-analise" style="padding: 0; border: none;">+ Adicionar um cartão</button>
               </div>
             </div>
           </div>
 
           <!-- Em Revisão Column -->
-          <div class="col-md-3">
+          <div class="col-3">
             <div class="card">
               <div class="card-header bg-warning">
-                <h3 class="card-title">Em Revisão</h3>
-                <span class="badge badge-light float-right">0</span>
+                <h3 class="card-title"><i class="fas fa-edit"></i> Em Revisão</h3>
+                <span class="badge badge-light float-right" id="revisao-count">0</span>
               </div>
-              <div class="card-body p-2">
+              <div class="card-body p-2" style="max-height: calc(100vh - 250px); overflow-y: auto;">
                 <div class="process-list" data-stage="revisao"></div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-link text-left" id="add-card-revisao" style="padding: 0; border: none;">+ Adicionar um cartão</button>
               </div>
             </div>
           </div>
 
           <!-- Concluído Column -->
-          <div class="col-md-3">
+          <div class="col-3">
             <div class="card">
               <div class="card-header bg-success">
-                <h3 class="card-title">Concluído</h3>
-                <span class="badge badge-light float-right">0</span>
+                <h3 class="card-title"><i class="fas fa-check"></i> Concluído</h3>
+                <span class="badge badge-light float-right" id="concluido-count">0</span>
               </div>
-              <div class="card-body p-2">
+              <div class="card-body p-2" style="max-height: calc(100vh - 250px); overflow-y: auto;">
                 <div class="process-list" data-stage="concluido"></div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-link text-left" id="add-card-concluido" style="padding: 0; border: none;">+ Adicionar um cartão</button>
               </div>
             </div>
           </div>
@@ -287,8 +221,9 @@
       </div>
     </section>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+  
+  <script src="../../plugins/jquery/jquery.min.js"></script>
+  <script src="../../dist/js/adminlte.min.js"></script>
   <script src="COLUNAS.js"></script>
 </body>
 </html>

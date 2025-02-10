@@ -25,16 +25,16 @@ let allCards = [];
 // Função para criar um card
 function createCard(cardId = null, isFavorite = false) {
     const id = cardId || getRandomString(8);
-    const favoriteClass = favorites.includes(id) ? 'text-warning' : 'text-secondary';
+    const favoriteClass = favorites.includes(id) ? 'text-warning' : 'text-gray-dark';
     
     return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100 border border-dark shadow-sm" onclick="handleCardClick(event, '${id}')" style="transition: all 0.2s ease;">
+            <div class="card h-100 shadow-sm bg-primary" onclick="handleCardClick(event, '${id}')" style="transition: all 0.2s ease;">
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center text-truncate">
-                            <i class="fas fa-building text-secondary mr-2"></i>
-                            <span class="text-dark text-truncate">Corregedoria ${getRandomString(6)}</span>
+                            <i class="fas fa-building text-white mr-2"></i>
+                            <span class="text-white text-truncate">Corregedoria ${getRandomString(6)}</span>
                         </div>
                         <button class="btn btn-link p-0" style="z-index: 2">
                             <i class="fas fa-star ${favoriteClass}" onclick="toggleFavorite(event, '${id}')"></i>
@@ -42,15 +42,15 @@ function createCard(cardId = null, isFavorite = false) {
                     </div>
                     <div class="d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center py-1">
-                            <small class="text-muted">Abertos</small>
+                            <small class="text-white">Abertos</small>
                             <span class="badge badge-light">${getRandomNumber(10, 100)}</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-1">
-                            <small class="text-muted">Arquivados</small>
+                            <small class="text-white">Arquivados</small>
                             <span class="badge badge-success">${getRandomNumber(5, 50)}</span>
                         </div>
                         <div class="d-flex justify-content-between align-items-center py-1">
-                            <small class="text-muted">Em Atraso</small>
+                            <small class="text-white">Em Atraso</small>
                             <span class="badge badge-danger">${getRandomNumber(1, 20)}</span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ function generateCards() {
     container.innerHTML = '';
 
     const structure = `
-        <div class="col-12 mb-4">
+        <div class="col-12 mb-4 ">
             <div class="d-flex justify-content-between align-items-start flex-wrap">
                 <div class="mb-3 mb-md-0">
                     <h1 class="m-0 text-dark">Dashboard de Processos</h1>
