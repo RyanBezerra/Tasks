@@ -13,9 +13,14 @@ function getRandomString(length) {
     return result;
 }
 
-// Adiciona estado para favoritos e histórico
-let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-let recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+// Limpar o localStorage ao iniciar
+localStorage.removeItem('favorites');
+localStorage.removeItem('recentlyViewed');
+
+// Inicializar arrays vazios e variável para todos os cards
+let favorites = [];
+let recentlyViewed = [];
+let allCards = [];
 
 // Função para criar um card
 function createCard(cardId = null, isFavorite = false) {
@@ -24,12 +29,12 @@ function createCard(cardId = null, isFavorite = false) {
     
     return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100 shadow-sm" onclick="handleCardClick(event, '${id}')">
+            <div class="card h-100 border border-dark shadow-sm" onclick="handleCardClick(event, '${id}')" style="transition: all 0.2s ease;">
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center text-truncate">
                             <i class="fas fa-building text-secondary mr-2"></i>
-                            <span class="text-secondary text-truncate">Corregedoria ${getRandomString(6)}</span>
+                            <span class="text-dark text-truncate">Corregedoria ${getRandomString(6)}</span>
                         </div>
                         <button class="btn btn-link p-0" style="z-index: 2">
                             <i class="fas fa-star ${favoriteClass}" onclick="toggleFavorite(event, '${id}')"></i>
@@ -55,23 +60,28 @@ function createCard(cardId = null, isFavorite = false) {
     `;
 }
 
+// Função para criar novo card
+function handleCreateCard() {
+    const allCardsContainer = document.getElementById('all-cards-container');
+    if (allCardsContainer) {
+        const newCardId = getRandomString(8);
+        allCards.push(newCardId);
+        localStorage.setItem('allCards', JSON.stringify(allCards));
+        generateCards();
+    }
+}
+
 // Função principal para gerar os cards
-function generateCards(quantity) {
+function generateCards() {
     const container = document.querySelector('.row');
     container.innerHTML = '';
 
-    // Cria o cabeçalho
-    const header = `
+    const structure = `
         <div class="col-12 mb-4">
             <div class="d-flex justify-content-between align-items-start flex-wrap">
                 <div class="mb-3 mb-md-0">
                     <h1 class="m-0 text-dark">Dashboard de Processos</h1>
                     <p class="text-muted">Visão Geral das Corregedorias - João Pessoa 2025</p>
-                </div>
-                <div class="d-grid w-100 d-md-block">
-                    <button type="button" class="btn btn-primary">
-                        <i class="fas fa-download mr-2"></i>Exportar Relatório
-                    </button>
                 </div>
             </div>
         </div>
@@ -82,17 +92,23 @@ function generateCards(quantity) {
                 <i class="fas fa-star text-warning mr-2"></i>Quadros Favoritos
             </h5>
             <div class="row mx-n2" id="favorites-container">
-                <!-- Cards favoritos serão inseridos aqui -->
+                ${favorites.length > 0 
+                    ? favorites.map(cardId => createCard(cardId, true)).join('')
+                    : '<div class="col-12"><p class="text-muted">Nenhum quadro favorito ainda.</p></div>'
+                }
             </div>
         </div>
 
-        <!-- Seção de Visualizados Recentemente -->
+        <!-- Seção de Recentes -->
         <div class="col-12 mb-4">
             <h5 class="text-dark mb-3">
                 <i class="fas fa-clock text-info mr-2"></i>Visualizados Recentemente
             </h5>
             <div class="row mx-n2" id="recent-container">
-                <!-- Cards recentes serão inseridos aqui -->
+                ${recentlyViewed.length > 0 
+                    ? recentlyViewed.map(cardId => createCard(cardId)).join('')
+                    : '<div class="col-12"><p class="text-muted">Nenhum quadro visualizado recentemente.</p></div>'
+                }
             </div>
         </div>
 
@@ -102,74 +118,38 @@ function generateCards(quantity) {
                 <i class="fas fa-th-large text-secondary mr-2"></i>Todos os Quadros
             </h5>
             <div class="row mx-n2" id="all-cards-container">
-                <!-- Todos os cards serão inseridos aqui -->
-            </div>
-        </div>
-    `;
-    container.innerHTML = header;
-
-    // Gera os cards em suas respectivas seções
-    const favoritesContainer = document.getElementById('favorites-container');
-    const recentContainer = document.getElementById('recent-container');
-    const allCardsContainer = document.getElementById('all-cards-container');
-
-    // Gera cards favoritos
-    favorites.forEach(cardId => {
-        favoritesContainer.innerHTML += createCard(cardId);
-    });
-
-    // Gera cards recentes
-    recentlyViewed.forEach(cardId => {
-        if (!favorites.includes(cardId)) {
-            recentContainer.innerHTML += createCard(cardId);
-        }
-    });
-
-    // Gera todos os cards
-    for (let i = 0; i < quantity; i++) {
-        allCardsContainer.innerHTML += createCard();
-    }
-}
-
-// Função para atualizar os cards quando solicitado
-function updateCards() {
-    const quantity = document.getElementById('cardQuantity').value;
-    generateCards(parseInt(quantity));
-}
-
-// Adiciona o input e botão para controlar a quantidade de cards
-document.addEventListener('DOMContentLoaded', function() {
-    const controlDiv = document.createElement('div');
-    controlDiv.className = 'col-12 mb-3';
-    controlDiv.innerHTML = `
-        <div class="input-group" style="max-width: 300px;">
-            <input type="number" class="form-control" id="cardQuantity" value="6" min="1" max="20">
-            <div class="input-group-append">
-                <button class="btn btn-primary" onclick="updateCards()">Gerar Cards</button>
+                ${allCards.length > 0 
+                    ? allCards.map(cardId => createCard(cardId)).join('')
+                    : '<div class="col-12"><p class="text-muted">Nenhum quadro adicionado ainda.</p></div>'
+                }
             </div>
         </div>
     `;
     
-    const container = document.querySelector('.row');
-    container.insertBefore(controlDiv, container.firstChild);
-    
-    generateCards(20);
-});
+    container.innerHTML = structure;
+}
 
 // Função para lidar com o clique no card
 function handleCardClick(event, cardId) {
     // Ignora o clique se for no botão de favorito
-    if (event.target.closest('.favorite-btn')) {
+    if (event.target.closest('.btn-link')) {
         return;
     }
     
-    addToRecent(cardId);
-    generateCards(20); // Atualiza a visualização
+    // Adiciona aos recentes apenas se não estiver lá
+    if (!recentlyViewed.includes(cardId)) {
+        recentlyViewed = [cardId, ...recentlyViewed.filter(id => id !== cardId)];
+        if (recentlyViewed.length > 5) {
+            recentlyViewed.pop();
+        }
+        localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
+        generateCards();
+    }
 }
 
 // Função para alternar favorito
 function toggleFavorite(event, cardId) {
-    event.stopPropagation(); // Impede que o clique propague para o card
+    event.stopPropagation();
     
     const index = favorites.indexOf(cardId);
     if (index === -1) {
@@ -177,16 +157,22 @@ function toggleFavorite(event, cardId) {
     } else {
         favorites.splice(index, 1);
     }
+    
     localStorage.setItem('favorites', JSON.stringify(favorites));
-    generateCards(20);
+    generateCards();
 }
 
-// Função para adicionar à visualização recente
-function addToRecent(cardId) {
-    recentlyViewed = recentlyViewed.filter(id => id !== cardId);
-    recentlyViewed.unshift(cardId);
-    if (recentlyViewed.length > 5) { // Mantém apenas os 5 mais recentes
-        recentlyViewed.pop();
+// Inicializa a página
+document.addEventListener('DOMContentLoaded', function() {
+    // Recupera dados do localStorage
+    favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+    allCards = JSON.parse(localStorage.getItem('allCards') || '[]');
+    
+    generateCards();
+
+    const createButton = document.querySelector('.btn-primary');
+    if (createButton) {
+        createButton.addEventListener('click', handleCreateCard);
     }
-    localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
-}
+});
