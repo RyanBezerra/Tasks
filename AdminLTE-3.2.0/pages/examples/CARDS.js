@@ -1,9 +1,7 @@
-// Função para gerar número aleatório dentro de um intervalo
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Função para gerar string aleatória
 function getRandomString(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let result = '';
@@ -13,30 +11,27 @@ function getRandomString(length) {
     return result;
 }
 
-// Limpar o localStorage ao iniciar
 localStorage.removeItem('favorites');
 localStorage.removeItem('recentlyViewed');
 
-// Inicializar arrays vazios e variável para todos os cards
 let favorites = [];
 let recentlyViewed = [];
 let allCards = [];
 
-// Função para criar um card
 function createCard(cardId = null, isFavorite = false) {
     const id = cardId || getRandomString(8);
     const favoriteClass = favorites.includes(id) ? 'text-warning' : 'text-gray-dark';
     
     return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card h-100 shadow-sm bg-primary" onclick="handleCardClick(event, '${id}')" style="transition: all 0.2s ease;">
+            <div class="card h-100 shadow-sm bg-primary" onclick="handleCardClick(event, '${id}')">
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="d-flex align-items-center text-truncate">
                             <i class="fas fa-building text-white mr-2"></i>
                             <span class="text-white text-truncate">Corregedoria ${getRandomString(6)}</span>
                         </div>
-                        <button class="btn btn-link p-0" style="z-index: 2">
+                        <button class="btn btn-link p-0">
                             <i class="fas fa-star ${favoriteClass}" onclick="toggleFavorite(event, '${id}')"></i>
                         </button>
                     </div>
@@ -60,7 +55,6 @@ function createCard(cardId = null, isFavorite = false) {
     `;
 }
 
-// Função para criar novo card
 function handleCreateCard() {
     const allCardsContainer = document.getElementById('all-cards-container');
     if (allCardsContainer) {
@@ -71,7 +65,6 @@ function handleCreateCard() {
     }
 }
 
-// Função principal para gerar os cards
 function generateCards() {
     const container = document.querySelector('.row');
     container.innerHTML = '';
@@ -80,7 +73,7 @@ function generateCards() {
         <div class="col-12 mb-4 ">
             <div class="d-flex justify-content-between align-items-start flex-wrap">
                 <div class="mb-3 mb-md-0">
-                    <h1 class="m-0 text-dark">Dashboard de Processos</h1>
+                    <h1 class="m-0 text-dark">Gerenciador de Quadros</h1>
                     <p class="text-muted">Visão Geral das Corregedorias - João Pessoa 2025</p>
                 </div>
             </div>
@@ -129,14 +122,12 @@ function generateCards() {
     container.innerHTML = structure;
 }
 
-// Função para lidar com o clique no card
+
 function handleCardClick(event, cardId) {
-    // Ignora o clique se for no botão de favorito
     if (event.target.closest('.btn-link')) {
         return;
     }
     
-    // Adiciona aos recentes apenas se não estiver lá
     if (!recentlyViewed.includes(cardId)) {
         recentlyViewed = [cardId, ...recentlyViewed.filter(id => id !== cardId)];
         if (recentlyViewed.length > 5) {
@@ -147,7 +138,6 @@ function handleCardClick(event, cardId) {
     }
 }
 
-// Função para alternar favorito
 function toggleFavorite(event, cardId) {
     event.stopPropagation();
     
@@ -162,9 +152,7 @@ function toggleFavorite(event, cardId) {
     generateCards();
 }
 
-// Inicializa a página
 document.addEventListener('DOMContentLoaded', function() {
-    // Recupera dados do localStorage
     favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
     recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
     allCards = JSON.parse(localStorage.getItem('allCards') || '[]');

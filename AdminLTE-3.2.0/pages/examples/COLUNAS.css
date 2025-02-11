@@ -1,0 +1,11 @@
+.coluna {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto; 
+}
+
+@media (max-width: 768px) {
+    .coluna {
+        max-height: calc(100vh - 200px);
+    }
+}
+
