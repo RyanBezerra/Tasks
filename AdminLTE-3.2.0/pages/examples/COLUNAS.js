@@ -51,7 +51,7 @@ function displayProcessos() {
         const entregaClass = processo.dataEntrega < 0 ? 'text-danger' : processo.dataEntrega <= 15 ? 'text-warning' : 'text-success';
 
         const processoHTML = `
-            <div class="card mb-2">
+            <div class="card mb-2" data-id="${processo.id}" onclick="openProcessDetail('${processo.id}')">
                 <div class="card-body text-dark">
                     <h5 class="card-title w-100"><strong>${processo.titulo}</strong></h5>
                     <p class="mb-1"><strong>Data de Entrega:</strong> <span class="${entregaClass}">${processo.dataEntrega} dias</span></p>
@@ -71,7 +71,38 @@ function displayProcessos() {
     document.getElementById('revisao-count').innerText = counts.revisao;
     document.getElementById('concluido-count').innerText = counts.concluido;
 }
+
+
+function openProcessDetail(id) {
+    const processo = processos.find(p => p.id === id);
+    if (processo) {
+        document.getElementById('process-title').innerText = processo.titulo;
+
+        document.getElementById('process-members').innerText = "Membros do processo.";
+        document.getElementById('process-label').innerText = "Etiquetas do processo.";
+        document.getElementById('process-checklist').innerText = "Checklist:";
+        document.getElementById('process-dates').innerText = `Data de Início: ${new Date().toLocaleDateString()}
+        Prazo de Entrega: ${processo.dataEntrega} dias`;
+        document.getElementById('process-attachment').innerText = "Anexos do processo";
+        document.getElementById('process-movement').innerText = "Movimentações/Transferências do processo";
+        document.getElementById('process-activity').innerText = "Ações realizadas no processo";
+
+        $('#processDetailModal').modal('show');
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     generateProcessos();
     displayProcessos();
+});
+
+document.getElementById('add-checklist-item').addEventListener('click', function() {
+    const checklistContainer = document.getElementById('process-checklist');
+    const newItem = document.createElement('div');
+    newItem.classList.add('checklist-item', 'd-flex', 'align-items-center', 'mb-2');
+    newItem.innerHTML = `
+        <input type="checkbox" class="mr-2">
+        <input type="text" placeholder="Novo item" class="form-control">
+    `;
+    checklistContainer.appendChild(newItem);
 });

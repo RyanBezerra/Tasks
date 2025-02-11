@@ -197,9 +197,52 @@
       </div>
     </section>
   </div>
-  
+  <div class="modal fade" id="processDetailModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h4 class="modal-title">Detalhes do Processo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="p-3">
+            <p id="process-title" class="font-weight-bold"></p>
+            <h6>Descrição:</h6>
+            <p id="process-description" class="text-muted"></p>
+            <input type="text" id="process-description" class="form-control" placeholder="Digite a descrição aqui...">
+            <hr>
+            <div id="process-checklist" class="border p-2 mb-2 bg-light"></div>
+            <button class="btn btn-link" id="add-checklist-item">Adicionar um item</button>
+            <hr>
+            <h6>Membros:</h6>
+            <p id="process-members" class="text-muted"></p>
+            <h6>Etiqueta:</h6>
+            <p id="process-label" class="badge badge-info"></p>
+            <hr>
+            <h6>Datas:</h6>
+            <p id="process-dates" class="text-muted"></p>
+            <h6>Anexo:</h6>
+            <p id="process-attachment" class="text-muted"></p>
+            <h6>Movimentação:</h6>
+            <p id="process-movement" class="text-muted"></p>
+            <h6>Atividade:</h6>
+            <div id="process-activity" class="border p-2 mt-2"></div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          <button id="archive-button" class="btn btn-primary">Arquivar</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="../../plugins/jquery/jquery.min.js"></script>
   <script src="../../dist/js/adminlte.min.js"></script>
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="COLUNAS.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
